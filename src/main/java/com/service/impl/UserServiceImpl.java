@@ -12,21 +12,21 @@ import com.service.UserService;
 @Service("userService")
 public class UserServiceImpl implements UserService {
 
-  @Autowired
-  private UserRepository userRepository;
+	@Autowired
+	private UserRepository userRepository;
 
-  @Override
-  public void save(User user) {
-    userRepository.save(user);
-  }
+	@Override
+	public void save(User user) {
+		userRepository.save(user);
+	}
 
-  @Override
-  public User getUser(String userName) {
-    List<User> list = userRepository.findByUserName(userName);
-    if (null != list) {
-      return list.get(0);
-    }
-    return null;
-  }
+	@Override
+	public User getUser(String userName) {
+		List<User> list = userRepository.findByUserName(userName);
+		if (null != list && list.size() > 0) {
+			return list.get(0);
+		}
+		return null;
+	}
 
 }
